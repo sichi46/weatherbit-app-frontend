@@ -14,7 +14,6 @@ import {
 import { useState } from "react";
 import { useMutation } from "react-query";
 import moment from "moment";
-import WeatherDataLoader from "@/components/home/weather-data-loader";
 
 const Home = () => {
   const [city, setCity] = useState("");
@@ -51,7 +50,7 @@ const Home = () => {
           {isLoading ? <Loader className=" animate-spin" /> : "Search"}
         </Button>
       </div>
-      {isLoading && <WeatherDataLoader />}
+      {isLoading && <> loading</>}
       {data &&
         data.map((item) => {
           const iconUrl = `https://www.weatherbit.io/static/img/icons/${item.weather.icon}.png`;
@@ -67,38 +66,41 @@ const Home = () => {
                   className="w-18 h-18"
                 />
                 <p className="flex items-center gap-4">
-                  <ThermometerIcon />
+                  <ThermometerIcon className="text-red-500" />
                   <span className=" text-3xl font-bold">{item.temp}°</span>
                 </p>
                 <p>{item.weather.description}</p>
                 <div className=" grid md:grid-cols-5 grid-cols-2  gap-8 mt-8">
                   <div className="flex flex-col items-center">
-                    <HandIcon />
+                    <HandIcon className="text-yellow-500" />
                     <span className="text-xs py-2">Feels like</span>
                     <p>{item.app_temp}°C</p>
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <Wind />
+                    <Wind className="text-teal-500" />
                     <span className="text-xs py-2">Wind speed</span>
                     <p>{item.wind_spd}m/s</p>
                   </div>
                   <div className="flex  flex-col items-center ">
-                    <Cloudy />
+                    <Cloudy className="text-gray-400" />
                     <span className="text-xs py-2">Humidity</span>
                     <p>{item.rh}%</p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <Fan />
+                    <Fan className="text-green-500" />
                     <span className="text-xs py-2">Air Quality Index</span>
                     <p>{item.aqi}</p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <Timer />
+                    <Timer className="text-blue-500" />
                     <span className="text-xs py-2">Observation time</span>
                     <p>{moment(item.ob_time).format("LT ")}</p>
                   </div>
                 </div>
+                <Button variant={"outline"}>
+                  <a href={`/${item.city_name}`}>Check Forecast</a>
+                </Button>
               </div>
             </div>
           );
