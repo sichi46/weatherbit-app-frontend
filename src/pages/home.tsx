@@ -141,10 +141,11 @@ const Home = () => {
                     <p>{item.app_temp}°C</p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <Wind className="text-teal-500" />
-                    <span className="text-xs py-2">Wind speed</span>
-                    <p>{item.wind_spd}m/s</p>
+                    <Timer className="text-blue-500" />
+                    <span className="text-xs py-2">Observation time</span>
+                    <p>{moment(item.ob_time).format("LT ")}</p>
                   </div>
+
                   <div className="flex flex-col items-center">
                     <Cloudy className="text-gray-400" />
                     <span className="text-xs py-2">Humidity</span>
@@ -155,10 +156,11 @@ const Home = () => {
                     <span className="text-xs py-2">Air Quality Index</span>
                     <p>{item.aqi}</p>
                   </div>
+
                   <div className="flex flex-col items-center">
-                    <Timer className="text-blue-500" />
-                    <span className="text-xs py-2">Observation time</span>
-                    <p>{moment(item.ob_time).format("LT ")}</p>
+                    <Wind className="text-teal-500" />
+                    <span className="text-xs py-2">Wind speed</span>
+                    <p>{item.wind_spd}m/s</p>
                   </div>
                 </div>
                 <Button variant={"outline"}>
