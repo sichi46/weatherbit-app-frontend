@@ -104,10 +104,6 @@ BASE_URL=https://api.weatherbit.io/v2.0
 API_KEY = Your_API_key here
 ```
 
-```plaintext
-npm start
-```
-
 ## 6. Usage
 
 Open the app in your browser (usually at http://localhost:3000).
