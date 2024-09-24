@@ -3,10 +3,15 @@ import { Input } from "@/components/ui/input";
 import { WeatherApiResponse, WeatherData } from "@/types";
 import axios from "axios";
 import {
+  CloudDrizzle,
   Cloudy,
+  Droplet,
   Fan,
   HandIcon,
   Loader,
+  Signpost,
+  Sunrise,
+  Sunset,
   ThermometerIcon,
   Timer,
   Wind,
@@ -134,7 +139,7 @@ const Home = () => {
                   <span className="text-3xl font-bold">{item.temp}°</span>
                 </p>
                 <p>{item.weather.description}</p>
-                <div className="grid md:grid-cols-5 grid-cols-2 gap-8 mt-8">
+                <div className="grid md:grid-cols-5 grid-cols-2 gap-10 mt-8">
                   <div className="flex flex-col items-center">
                     <HandIcon className="text-yellow-500" />
                     <span className="text-xs py-2">Feels like</span>
@@ -147,7 +152,7 @@ const Home = () => {
                   </div>
 
                   <div className="flex flex-col items-center">
-                    <Cloudy className="text-gray-400" />
+                    <Droplet className="text-blue-700" />
                     <span className="text-xs py-2">Humidity</span>
                     <p>{item.rh}%</p>
                   </div>
@@ -162,8 +167,33 @@ const Home = () => {
                     <span className="text-xs py-2">Wind speed</span>
                     <p>{item.wind_spd}m/s</p>
                   </div>
+                  <div className="flex flex-col items-center">
+                    <Signpost className="text-green-500" />
+                    <span className="text-xs py-2">Wind Direction</span>
+                    <p>{item.wind_cdir_full}</p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <CloudDrizzle className="text-blue-300" />
+                    <span className="text-xs py-2">Precipitation</span>
+                    <p>{item.precip}mm</p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Cloudy className="text-teal-500" />
+                    <span className="text-xs py-2">clouds</span>
+                    <p>{item.clouds} %</p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Sunrise className="text-yellow-200" />
+                    <span className="text-xs py-2">sunrise</span>
+                    <p>{item.sunrise} AM</p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Sunset className="text-orange-500" />
+                    <span className="text-xs py-2">Sunset</span>
+                    <p>{item.sunset} PM</p>
+                  </div>
                 </div>
-                <Button variant={"outline"}>
+                <Button variant={"outline"} className=" mt-8">
                   <a href={`/${item.city_name}`}>Check Forecast</a>
                 </Button>
               </div>
