@@ -27,9 +27,12 @@ const Home = () => {
   const { mutate, isLoading } = useMutation<WeatherApiResponse>(
     "getWeatherByCity",
     async () => {
-      const res = await axios.post(`http://localhost:7000/weather`, {
-        city,
-      });
+      const res = await axios.post(
+        `https://weatherbit-app-server.vercel.app/weather`,
+        {
+          city,
+        }
+      );
       return res.data;
     },
     {

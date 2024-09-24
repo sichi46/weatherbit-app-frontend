@@ -30,9 +30,12 @@ const CityForecast = () => {
   const { data, isLoading } = useQuery<ForecastApiResponse>(
     ["getCityForecast", city],
     async () => {
-      const res = await axios.post(`http://localhost:7000/weather/forecast`, {
-        city,
-      });
+      const res = await axios.post(
+        `https://weatherbit-app-server.vercel.app/weather/forecast`,
+        {
+          city,
+        }
+      );
       return res.data;
     }
   );
