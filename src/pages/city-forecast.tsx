@@ -10,7 +10,6 @@ import {
   Timer,
   Wind,
 } from "lucide-react";
-import moment from "moment";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
